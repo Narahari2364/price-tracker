@@ -13,7 +13,7 @@ def get_client():
         uri = os.getenv("MONGODB_URI")
         if not uri:
             raise ValueError("MONGODB_URI not found in .env file")
-        _client = MongoClient(uri)
+        _client = MongoClient(uri, tls=True, tlsAllowInvalidCertificates=True)
     return _client
 
 def get_db():
