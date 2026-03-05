@@ -8,6 +8,9 @@ from scrapers.middleware.user_agent import get_headers
     retry=retry_if_exception_type((requests.exceptions.RequestException,))
 )
 def fetch_page(url, timeout=15):
-    response = requests.get(url, headers=get_headers(), timeout=timeout)
+    headers = get_headers()
+    headers["Accept-Encoding"] = "identity"
+    response = requests.get(url, headers=headers, timeout=timeout)
     response.raise_for_status()
+    response.encoding = "utf-8"
     return response
