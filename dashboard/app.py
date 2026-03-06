@@ -3,7 +3,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import streamlit as st
-from dashboard.pages import overview, catalog, trends, deals
+from dashboard.views import overview, catalog, trends, deals
 
 st.set_page_config(
     page_title="Price Tracker",
