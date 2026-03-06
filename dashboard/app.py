@@ -31,6 +31,31 @@ page = st.sidebar.radio(
 st.sidebar.markdown("---")
 st.sidebar.markdown("Built with ❤️ using Python + MongoDB")
 
+st.markdown("""
+    <div style="
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        padding: 1.5rem 2rem;
+        border-radius: 1rem;
+        color: white;
+        margin-bottom: 1.5rem;
+    ">
+        <h1 style="
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin: 0 0 0.25rem 0;
+        ">
+            🛒 Price Tracker
+        </h1>
+        <p style="
+            font-size: 0.95rem;
+            margin: 0;
+            opacity: 0.9;
+        ">
+            Automated e-commerce price monitoring · 1,020 products · 30,600+ price records
+        </p>
+    </div>
+""", unsafe_allow_html=True)
+
 if page == "📊 Overview":
     overview.show()
 elif page == "📦 Catalog":
