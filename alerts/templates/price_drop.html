@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; }
+        .header h1 { color: white; margin: 0; font-size: 24px; }
+        .header p { color: rgba(255,255,255,0.85); margin: 8px 0 0 0; }
+        .body { padding: 30px; }
+        .deal-box { background: #f8f9ff; border-left: 4px solid #667eea; border-radius: 8px; padding: 20px; margin: 20px 0; }
+        .deal-box h2 { margin: 0 0 15px 0; color: #333; font-size: 18px; }
+        .price-row { display: flex; justify-content: space-between; margin: 8px 0; }
+        .old-price { color: #999; text-decoration: line-through; font-size: 16px; }
+        .new-price { color: #667eea; font-weight: bold; font-size: 20px; }
+        .drop-badge { background: #ff4757; color: white; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+        .footer { background: #f8f9ff; padding: 20px; text-align: center; color: #999; font-size: 12px; }
+        .btn { display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛒 Price Tracker Alert</h1>
+            <p>A product you're tracking just dropped in price!</p>
+        </div>
+        <div class="body">
+            <p>Hi there! We found a great deal for you:</p>
+            <div class="deal-box">
+                <h2>{{title}}</h2>
+                <div class="price-row">
+                    <span class="old-price">Was: {{currency}} {{price_before}}</span>
+                    <span class="drop-badge">-{{drop_pct}}% OFF</span>
+                </div>
+                <div class="price-row">
+                    <span class="new-price">Now: {{currency}} {{price_after}}</span>
+                </div>
+            </div>
+            <p>You're saving <strong>{{currency}} {{saving}}</strong> on this product!</p>
+            <center><a href="{{url}}" class="btn">View Product →</a></center>
+        </div>
+        <div class="footer">
+            <p>Price Tracker · Automated Price Monitoring System</p>
+            <p>Built with Python · MongoDB · Streamlit</p>
+        </div>
+    </div>
+</body>
+</html>
