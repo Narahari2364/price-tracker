@@ -41,6 +41,22 @@ def sample_product():
 @pytest.fixture
 def sample_price_history():
     return [
-        {"product_id": "book_test_123", "price": 14.99, "scraped_at": datetime(2026, 1, 1), "scrape_job_id": "job_1"},
-        {"product_id": "book_test_123", "price": 12.99, "scraped_at": datetime(2026, 1, 2), "scrape_job_id": "job_2"},
-        {"product_id": "book_test_123", "price": 10.99, "scraped_at": datetime(20
+        {
+            "product_id": "book_test_123",
+            "price": 14.99,
+            "scraped_at": datetime(2026, 1, 1),
+            "scrape_job_id": "job_1",
+        },
+        {
+            "product_id": "book_test_123",
+            "price": 12.99,
+            "scraped_at": datetime(2026, 1, 2),
+            "scrape_job_id": "job_2",
+        },
+        {
+            "product_id": "book_test_123",
+            "price": 10.99,
+            "scraped_at": datetime(2026, 1, 3),
+            "scrape_job_id": "job_3",
+        },
+    ]
