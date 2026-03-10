@@ -60,3 +60,17 @@ def sample_price_history():
             "scrape_job_id": "job_3",
         },
     ]
+
+
+@pytest.fixture
+def sample_alert():
+    return {
+        "product_id": "book_test_123",
+        "alert_type": "price_drop",
+        "threshold_pct": 10.0,
+        "price_before": 14.99,
+        "price_after": 10.99,
+        "drop_percentage": 26.68,
+        "notified": False,
+        "notification_channel": "email",
+    }
