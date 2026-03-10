@@ -81,18 +81,18 @@ class TestPriceRepo:
 class TestAlertRepo:
     def test_insert_alert(self, sample_alert):
         mock_db = MagicMock()
+        mock_db.alerts.insert_one.return_value = MagicMock(inserted_id="test_id")
 
         with patch("database.repositories.alert_repo.get_db", return_value=mock_db):
-            with patch.dict(os.environ, {"PRICE_DROP_THRESHOLD": "10"}):
-                from database.repositories.alert_repo import insert_alert
+            with patch("database.repositories.alert_repo.os.getenv", return_value="10"):
+                from database.repositories import alert_repo
                 import importlib
-                import database.repositories.alert_repo as alert_module
-                importlib.reload(alert_module)
-                result = alert_module.insert_alert(
+                importlib.reload(alert_repo)
+                alert_repo.get_db = lambda: mock_db
+                alert_repo.insert_alert(
                     product_id="book_test_123",
                     price_before=14.99,
                     price_after=10.99,
                     drop_pct=26.68
                 )
-
-        mock_db.alerts.insert_one.assert_called_once()
+                mock_db.alerts.insert_one.assert_called_once()
