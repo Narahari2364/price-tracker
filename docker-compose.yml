@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  dashboard:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - DB_NAME=${DB_NAME}
+      - EMAIL_SENDER=${EMAIL_SENDER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - EMAIL_RECEIVER=${EMAIL_RECEIVER}
+      - SCRAPE_DELAY_MIN=${SCRAPE_DELAY_MIN}
+      - SCRAPE_DELAY_MAX=${SCRAPE_DELAY_MAX}
+      - PRICE_DROP_THRESHOLD=${PRICE_DROP_THRESHOLD}
+      - ENV=production
+    restart: unless-stopped
+
+  scheduler:
+    build: .
+    command: python3 scheduler/runner.py
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - DB_NAME=${DB_NAME}
+      - EMAIL_SENDER=${EMAIL_SENDER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - EMAIL_RECEIVER=${EMAIL_RECEIVER}
+      - SCRAPE_DELAY_MIN=${SCRAPE_DELAY_MIN}
+      - SCRAPE_DELAY_MAX=${SCRAPE_DELAY_MAX}
+      - PRICE_DROP_THRESHOLD=${PRICE_DROP_THRESHOLD}
+      - ENV=production
+    restart: unless-stopped
+    depends_on:
+      - dashboard
