@@ -3,11 +3,7 @@ import re
 def clean_price(price_str):
     if isinstance(price_str, (int, float)):
         return round(float(price_str), 2)
-    cleaned = re.sub(
-        r"[^\d.]",
-        "",
-        str(price_str).encode("ascii", "ignore").decode(),
-    )
+    cleaned = re.sub(r"[^\\d.]", "", str(price_str))
     try:
         return round(float(cleaned), 2)
     except ValueError:
